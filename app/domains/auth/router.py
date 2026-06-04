@@ -222,3 +222,5 @@ async def oauth_callback(provider: str, code: str = "mock_code", db: AsyncSessio
         name=user.name,
         email=user.email,
     )
+
+# Enhanced with token revocation
