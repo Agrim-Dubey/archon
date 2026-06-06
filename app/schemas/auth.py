@@ -57,5 +57,3 @@ class UserResponse(BaseModel):
 
     class Config:
         from_attributes = True
-
-# Enforcing strict password length and character sets
