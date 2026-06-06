@@ -1,1 +1,1 @@
-"""Authentication bounded context."""
+"""Authentication bounded context with JWT token versioning."""
