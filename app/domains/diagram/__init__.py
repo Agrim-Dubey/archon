@@ -1,0 +1,1 @@
+"""Diagram synchronization bounded context."""
