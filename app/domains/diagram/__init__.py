@@ -1,1 +1,1 @@
-"""Diagram synchronization bounded context."""
+"""Whiteboard diagram synchronization engine."""
