@@ -1,1 +1,1 @@
-"""Interview reports bounded context."""
+"""Candidate evaluation and scoring engine."""
