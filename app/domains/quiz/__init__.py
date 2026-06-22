@@ -1,0 +1,1 @@
+"""Quiz Bank bounded context."""
