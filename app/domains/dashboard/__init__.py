@@ -1,1 +1,1 @@
-"""Dashboard bounded context."""
+"""Candidate intelligence and dashboard context."""
