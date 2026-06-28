@@ -32,5 +32,3 @@ class OutboxWorker:
                 logger.info("Dispatching OutboxEvent [%s] type: %s", ev.id, ev.type)
                 ev.status = "PROCESSED"
             await db.commit()
-
-# Configured with backoff retry policy
