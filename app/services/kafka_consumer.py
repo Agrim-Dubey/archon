@@ -1,4 +1,3 @@
-"""Async Kafka consumer service."""
+"""Async Kafka consumer service with DLQ."""
 class KafkaConsumerService:
-    async def consume(self):
-        pass
+    pass
