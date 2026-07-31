@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class ScorecardDimension(BaseModel):
@@ -29,8 +29,7 @@ class ReportDetailResponse(BaseModel):
     scorecard_json: Dict[str, Any]
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ReportListItem(BaseModel):
@@ -41,5 +40,4 @@ class ReportListItem(BaseModel):
     overall_score: int
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

@@ -1,7 +1,7 @@
 """Pydantic schemas for whiteboard diagram state."""
 
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class NodeSchema(BaseModel):
@@ -12,8 +12,7 @@ class NodeSchema(BaseModel):
     x: float
     y: float
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class EdgeSchema(BaseModel):
@@ -23,8 +22,7 @@ class EdgeSchema(BaseModel):
     target: str
     type: Optional[str] = "default"
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class DiagramStateResponse(BaseModel):

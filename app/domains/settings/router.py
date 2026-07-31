@@ -41,7 +41,7 @@ async def update_settings(
         settings = UserSettings(user_id=user.id)
         db.add(settings)
 
-    update_data = req.dict(exclude_unset=True)
+    update_data = req.model_dump(exclude_unset=True)
     for field, val in update_data.items():
         if val is not None:
             setattr(settings, field, val)

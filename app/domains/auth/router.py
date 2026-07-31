@@ -1,6 +1,8 @@
 """Authentication domain repository, service, and router."""
 
+import hashlib
 import logging
+import uuid
 from datetime import datetime, timezone
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Response, status
@@ -86,8 +88,9 @@ class AuthService:
 
         access_token = create_access_token(user.id, token_version=user.token_version)
         refresh_token = create_refresh_token(user.id, token_version=user.token_version)
+        token_hash = hashlib.sha256(f"{refresh_token}:{uuid.uuid4()}".encode()).hexdigest()
         await self.repo.save_refresh_token(
-            user.id, refresh_token[-32:], datetime.now(timezone.utc)
+            user.id, token_hash, datetime.now(timezone.utc)
         )
 
         return TokenResponse(
@@ -106,8 +109,9 @@ class AuthService:
 
         access_token = create_access_token(user.id, token_version=user.token_version)
         refresh_token = create_refresh_token(user.id, token_version=user.token_version)
+        token_hash = hashlib.sha256(f"{refresh_token}:{uuid.uuid4()}".encode()).hexdigest()
         await self.repo.save_refresh_token(
-            user.id, refresh_token[-32:], datetime.now(timezone.utc)
+            user.id, token_hash, datetime.now(timezone.utc)
         )
 
         return TokenResponse(

@@ -60,7 +60,7 @@ async def get_dashboard_overview(
 
     # Fetch recommended quiz decks
     deck_res = await db.execute(select(QuizDeck).limit(3))
-    recommended_decks = [QuizDeckResponse.from_orm(d) for d in deck_res.scalars().all()]
+    recommended_decks = [QuizDeckResponse.model_validate(d) for d in deck_res.scalars().all()]
 
     return DashboardOverviewResponse(
         candidate_name=user.name,

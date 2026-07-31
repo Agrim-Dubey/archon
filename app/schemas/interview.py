@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field
+from pydantic import ConfigDict, BaseModel, Field
 
 
 class QuestionResponse(BaseModel):
@@ -16,8 +16,7 @@ class QuestionResponse(BaseModel):
     constraints: Optional[List[str]] = None
     architectural_tips: Optional[List[str]] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class StartInterviewRequest(BaseModel):
@@ -36,8 +35,7 @@ class InterviewResponse(BaseModel):
     started_at: datetime
     ended_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class SubmitInterviewRequest(BaseModel):

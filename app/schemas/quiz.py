@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class QuizOption(BaseModel):
@@ -21,8 +21,7 @@ class QuizQuestionResponse(BaseModel):
     options: List[QuizOption]
     is_daily: bool = False
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class QuizDeckResponse(BaseModel):
@@ -35,8 +34,7 @@ class QuizDeckResponse(BaseModel):
     category: str
     icon_name: str
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class QuizSubmitRequest(BaseModel):

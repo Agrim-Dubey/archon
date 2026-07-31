@@ -1,7 +1,7 @@
 """Pydantic schemas for user platform settings."""
 
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class UserSettingsSchema(BaseModel):
@@ -21,8 +21,7 @@ class UserSettingsSchema(BaseModel):
     email_notifications: bool
     weekly_report_digest: bool
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class UserSettingsUpdate(BaseModel):

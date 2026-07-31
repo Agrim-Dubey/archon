@@ -1,7 +1,7 @@
 """Pydantic schemas for authentication and user accounts."""
 
 from typing import Optional
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import ConfigDict, BaseModel, EmailStr, Field
 
 
 class UserRegisterRequest(BaseModel):
@@ -55,5 +55,4 @@ class UserResponse(BaseModel):
     email: str
     is_verified: bool
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

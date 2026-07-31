@@ -294,11 +294,13 @@ async def seed_database(db: AsyncSession) -> None:
 
     # Seed quiz decks & questions
     for deck_data in INITIAL_DECKS:
-        deck_id = deck_data["id"]
+        deck_dict = dict(deck_data)
+        deck_id = deck_dict["id"]
         existing_deck = await db.get(QuizDeck, deck_id)
         if not existing_deck:
-            questions_data = deck_data.pop("questions")
-            deck = QuizDeck(**deck_data, question_count=len(questions_data))
+            questions_data = deck_dict.pop("questions", [])
+            deck_dict["question_count"] = len(questions_data)
+            deck = QuizDeck(**deck_dict)
             db.add(deck)
             await db.flush()
 

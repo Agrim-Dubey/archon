@@ -23,8 +23,8 @@ class DiagramRepository:
         nodes_res = await self.db.execute(select(DiagramNode).where(DiagramNode.interview_id == interview_id))
         edges_res = await self.db.execute(select(DiagramEdge).where(DiagramEdge.interview_id == interview_id))
 
-        nodes = [NodeSchema.from_orm(n) for n in nodes_res.scalars().all()]
-        edges = [EdgeSchema.from_orm(e) for e in edges_res.scalars().all()]
+        nodes = [NodeSchema.model_validate(n) for n in nodes_res.scalars().all()]
+        edges = [EdgeSchema.model_validate(e) for e in edges_res.scalars().all()]
 
         return DiagramStateResponse(interview_id=interview_id, nodes=nodes, edges=edges)
 
